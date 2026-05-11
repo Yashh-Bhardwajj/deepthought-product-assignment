@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leadership Portfolio — Rajan Iyer · March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #1a1814;
+    --ink-muted:  #5c574f;
+    --ink-faint:  #9e9890;
+    --paper:      #faf8f4;
+    --surface:    #f3f0ea;
+    --border:     #e0dbd0;
+    --amber:      #c8750a;
+    --amber-light:#fef3e0;
+    --amber-mid:  #f5c96a;
+    --teal:       #0f6e56;
+    --teal-light: #e1f5ee;
+    --red:        #a32d2d;
+    --red-light:  #fcebeb;
+    --blue:       #185fa5;
+    --blue-light: #e6f1fb;
+    --serif:      'DM Serif Display', Georgia, serif;
+    --sans:       'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: var(--ink);
+    color: #fff;
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .top-bar-brand {
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    opacity: 0.9;
+  }
+  .top-bar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .month-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .month-btn:hover { background: rgba(255,255,255,0.15); }
+  .month-current {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    padding: 4px 14px;
+    opacity: 0.9;
+  }
+
+  /* ── Page shell ── */
+  .page { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+  /* ── Identity header ── */
+  .identity {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1.5px solid var(--border);
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+  }
+  .identity-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .identity-text { flex: 1; }
+  .identity-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .identity-role {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 2px;
+  }
+  .identity-program {
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+  .identity-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .identity-month {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .identity-uid {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--ink-faint);
+    background: var(--surface);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .identity-generated {
+    font-size: 11px;
+    color: var(--ink-faint);
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ── Signal block ── */
+  .signal {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .signal-score-wrap {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .score-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring-num {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-ring-num span:first-child {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1;
+    color: #fff;
+  }
+  .score-ring-num span:last-child {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+  }
+  .score-delta {
+    font-size: 12px;
+    color: #7fe8c0;
+    font-weight: 500;
+  }
+  .signal-text { flex: 1; }
+  .signal-headline {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+    color: #fff;
+  }
+  .signal-headline strong { font-style: normal; color: var(--amber-mid); }
+  .signal-narrative {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+  .signal-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+  .badge-pace {
+    background: rgba(127,232,192,0.2);
+    color: #7fe8c0;
+    border: 1px solid rgba(127,232,192,0.3);
+  }
+  .badge-level {
+    background: rgba(200,117,10,0.25);
+    color: var(--amber-mid);
+    border: 1px solid rgba(200,117,10,0.3);
+  }
+  .badge-tenure {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Story cards (Contribution + Capability) ── */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .story-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .story-card.contribution::before { background: var(--amber); }
+  .story-card.capability::before   { background: var(--teal); }
+
+  .story-card-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+  .story-card-subtitle {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-bottom: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .story-narrative {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    border-left: 2px solid var(--border);
+    padding-left: 0.85rem;
+  }
+
+  /* contribution stats */
+  .contrib-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .contrib-stat {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .contrib-stat-num {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .contrib-stat-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  /* delivery bar */
+  .delivery-bar-wrap { margin-bottom: 1rem; }
+  .delivery-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .delivery-bar-track {
+    height: 6px;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    gap: 2px;
+  }
+  .delivery-bar-done  { background: var(--amber); border-radius: 6px 0 0 6px; }
+  .delivery-bar-qa    { background: var(--amber-mid); }
+  .delivery-bar-prog  { background: #e0dbd0; }
+
+  /* ip list */
+  .ip-list { display: flex; flex-direction: column; gap: 6px; }
+  .ip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .ip-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* axis bars (capability) */
+  .axis-list { display: flex; flex-direction: column; gap: 10px; }
+  .axis-row { display: flex; align-items: center; gap: 10px; }
+  .axis-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    width: 100px;
+    flex-shrink: 0;
+  }
+  .axis-track {
+    flex: 1;
+    height: 6px;
+    background: var(--surface);
+    border-radius: 6px;
+    position: relative;
+    overflow: visible;
+  }
+  .axis-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+  }
+  .axis-threshold {
+    position: absolute;
+    top: -4px;
+    width: 1.5px;
+    height: 14px;
+    background: var(--ink-faint);
+    border-radius: 1px;
+  }
+  .axis-val {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .axis-gap-tag {
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .axis-gap-ok  { background: var(--teal-light); color: var(--teal); }
+  .axis-gap-low { background: var(--red-light); color: var(--red); }
+  .axis-legend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+  .axis-legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-line {
+    width: 14px; height: 1.5px;
+    background: var(--ink-faint);
+  }
+
+  /* ── Evidence cards (KPI, Constraints, Career) ── */
+  .evidence-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .evidence-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.15rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    gap: 1rem;
+  }
+  .evidence-header:hover { background: var(--surface); }
+  .evidence-header-left { display: flex; flex-direction: column; gap: 3px; }
+  .evidence-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .evidence-summary {
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  .evidence-chevron {
+    font-size: 18px;
+    color: var(--ink-faint);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .evidence-chevron.open { transform: rotate(180deg); }
+  .evidence-body {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem;
+    display: none;
+  }
+  .evidence-body.open { display: block; }
+  .evidence-narrative {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    border-left: 2px solid var(--border);
+    padding-left: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* KPI table */
+  .kpi-table { width: 100%; border-collapse: collapse; }
+  .kpi-table th {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    padding: 0 0 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .kpi-table th:not(:first-child) { text-align: right; }
+  .kpi-table td {
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--surface);
+    vertical-align: middle;
+  }
+  .kpi-table td:not(:first-child) { text-align: right; }
+  .kpi-name { color: var(--ink); font-size: 13px; }
+  .kpi-status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 10px;
+  }
+  .kpi-hit     { background: var(--teal-light); color: var(--teal); }
+  .kpi-miss    { background: var(--red-light); color: var(--red); }
+  .kpi-pending { background: var(--surface); color: var(--ink-faint); }
+  .kpi-verified {
+    font-size: 11px;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    justify-content: flex-end;
+  }
+  .kpi-unverified { font-size: 11px; color: var(--ink-faint); justify-content: flex-end; display: flex; }
+
+  /* constraint items */
+  .constraint-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .c-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .c-meta-num {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .c-meta-label { font-size: 11px; color: var(--ink-faint); }
+  .c-list { display: flex; flex-direction: column; gap: 8px; }
+  .c-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--surface);
+  }
+  .c-type-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .c-type-assumptions  { background: var(--amber); }
+  .c-type-internal_support { background: var(--blue); }
+  .c-type-permissions  { background: #8a5cf6; }
+  .c-type-talent       { background: var(--red); }
+  .c-type-budget       { background: var(--teal); }
+  .c-item-content { flex: 1; }
+  .c-item-label { font-size: 12.5px; color: var(--ink); line-height: 1.5; }
+  .c-item-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    align-items: center;
+  }
+  .c-tag {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 1px 7px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.8);
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    text-transform: capitalize;
+  }
+  .c-status-resolved { color: var(--teal); font-size: 11px; }
+  .c-status-open     { color: var(--red); font-size: 11px; }
+
+  /* career trajectory */
+  .career-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .career-stat { display: flex; flex-direction: column; gap: 3px; }
+  .career-stat-val {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .career-stat-label { font-size: 11px; color: var(--ink-faint); }
+  .career-runway {
+    position: relative;
+    margin: 1.75rem 0 0.75rem;
+  }
+  .runway-track {
+    height: 4px;
+    background: var(--surface);
+    border-radius: 4px;
+    position: relative;
+  }
+  .runway-progress {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-mid) 100%);
+    border-radius: 4px;
+  }
+  .runway-nodes {
+    position: relative;
+    height: 60px;
+    margin-top: -8px;
+  }
+  .runway-node {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .runway-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--paper);
+    margin-top: 2px;
+  }
+  .runway-dot.achieved { background: var(--amber); }
+  .runway-dot.current  { background: var(--ink); box-shadow: 0 0 0 3px rgba(26,24,20,0.12); }
+  .runway-dot.projected{ background: transparent; border: 2px dashed var(--amber); }
+  .runway-dot.future   { background: var(--surface); border: 2px solid var(--border); }
+  .runway-label { font-size: 10px; font-weight: 600; color: var(--ink); }
+  .runway-date  { font-size: 9px; color: var(--ink-faint); white-space: nowrap; }
+  .gap-drivers {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .gap-driver-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    background: var(--red-light);
+    padding: 7px 12px;
+    border-radius: 8px;
+  }
+  .gap-driver-icon { color: var(--red); font-size: 13px; }
+
+  /* ── Footer ── */
+  .portfolio-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+  .footer-uid { font-family: monospace; }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .identity  { animation: fadeUp 0.4s ease 0.05s both; }
+  .signal    { animation: fadeUp 0.4s ease 0.15s both; }
+  .story-grid{ animation: fadeUp 0.4s ease 0.25s both; }
+  .evidence-card { animation: fadeUp 0.4s ease 0.35s both; }
+
+  @media (max-width: 680px) {
+    .story-grid { grid-template-columns: 1fr; }
+    .signal { flex-direction: column; }
+    .identity { flex-direction: column; }
+    .identity-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top navigation bar -->
+<div class="top-bar">
+  <span class="top-bar-brand">PDGMS · Leadership Portfolio</span>
+  <div class="top-bar-nav">
+    <button class="month-btn">← Feb 2026</button>
+    <span class="month-current">March 2026</span>
+    <button class="month-btn" style="opacity:0.4; cursor:default">Apr 2026 →</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ─── Identity Header ─── -->
+  <div class="identity">
+    <div class="identity-avatar">RI</div>
+    <div class="identity-text">
+      <h1 class="identity-name">Rajan Iyer</h1>
+      <p class="identity-role">Production Planning Lead — Sterile Injectables</p>
+      <p class="identity-program">Facility 3 Commercialization · Vayura Lifesciences</p>
+    </div>
+    <div class="identity-meta">
+      <p class="identity-month">March 2026</p>
+      <span class="identity-uid">PDGMS-EMP-00512</span>
+      <span class="identity-generated">Generated 2 Apr 2026 · 19 months at org</span>
+    </div>
+  </div>
+
+  <!-- ─── Signal Block ─── -->
+  <div class="signal">
+    <div class="signal-score-wrap">
+      <div class="score-ring">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+          <circle cx="40" cy="40" r="34" fill="none"
+            stroke="#f5c96a" stroke-width="6"
+            stroke-dasharray="213.6"
+            stroke-dashoffset="60.3"
+            stroke-linecap="round"/>
+        </svg>
+        <div class="score-ring-num">
+          <span>71</span>
+          <span>/100</span>
+        </div>
+      </div>
+      <span class="score-delta">↑ 7 from Feb</span>
+    </div>
+
+    <div class="signal-text">
+      <p class="signal-headline">
+        <strong>Strongest month</strong> since Facility 3 launched —
+        a breakthrough on the validation protocol that had been stuck for three months.
+      </p>
+      <p class="signal-narrative">
+        Composite score jumped from 64 to 71, driven by 16 of 20 deliverables shipped and 7 original work items created. Delivery and engagement are above V3 thresholds. Framework application (52) and process adoption (58) remain below the 60 threshold — the one clear growth area heading into April.
+      </p>
+      <div class="signal-badges">
+        <span class="badge badge-pace">↑ Ahead of career plan</span>
+        <span class="badge badge-level">Currently V2 → targeting V3</span>
+        <span class="badge badge-tenure">Month 19 at Vayura</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Story Cards ─── -->
+  <div class="section-label">This month's story</div>
+  <div class="story-grid">
+
+    <!-- Contribution card -->
+    <div class="story-card contribution">
+      <div class="story-card-subtitle">What I shipped</div>
+      <h2 class="story-card-title">Contribution Highlights</h2>
+      <p class="story-narrative">
+        Shipped 16 of 20 deliverables — highest completion rate since the program launched. The process validation protocol was the critical win: stuck in regulatory review since December, Rajan broke the logjam by switching from sequential to joint reviews. The deviation investigation SOP he created has since been mandated across all three manufacturing facilities.
+      </p>
+
+      <div class="delivery-bar-wrap">
+        <div class="delivery-bar-header">
+          <span>Deliverables · 20 assigned</span>
+          <span>80% complete</span>
+        </div>
+        <div class="delivery-bar-track">
+          <div class="delivery-bar-done"  style="width:80%"></div>
+          <div class="delivery-bar-qa"    style="width:5%"></div>
+          <div class="delivery-bar-prog"  style="width:15%"></div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:6px; font-size:11px; color:var(--ink-faint);">
+          <span>■ 16 delivered</span>
+          <span style="color:var(--amber-mid)">■ 1 in review</span>
+          <span>■ 3 in progress / not started</span>
+        </div>
+      </div>
+
+      <div class="contrib-stats">
+        <div class="contrib-stat">
+          <div class="contrib-stat-num">16</div>
+          <div class="contrib-stat-label">Delivered (QA passed)</div>
+        </div>
+        <div class="contrib-stat">
+          <div class="contrib-stat-num">7</div>
+          <div class="contrib-stat-label">Original work items</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;">Top original work</div>
+      <div class="ip-list">
+        <div class="ip-item"><span class="ip-dot"></span><span>Process validation protocol — lyophilized injectable line (3 product families, 12 SKUs)</span></div>
+        <div class="ip-item"><span class="ip-dot"></span><span>Deviation investigation SOP — now standard across all 3 facilities</span></div>
+        <div class="ip-item"><span class="ip-dot"></span><span>Yield optimization report — 8% fill-weight variance, nozzle recalibration proposed</span></div>
+        <div class="ip-item" style="color:var(--ink-faint); font-style:italic;"><span class="ip-dot" style="background:var(--border)"></span><span>4 more items this month</span></div>
+      </div>
+    </div>
+
+    <!-- Capability card -->
+    <div class="story-card capability">
+      <div class="story-card-subtitle">How I grew</div>
+      <h2 class="story-card-title">Capability Growth</h2>
+      <p class="story-narrative">
+        Delivery and engagement are Rajan's strongest areas — consistent shipping and full ritual participation. Original work has been climbing as reusable SOPs get adopted by other teams. The gap is in structured frameworks (52) and process adoption (58) — both below the V3 threshold of 60. Solving problems through direct technical troubleshooting works in the short term but means root causes can recur.
+      </p>
+
+      <div class="axis-list">
+        <div class="axis-row">
+          <span class="axis-label">Delivery</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:80%; background:var(--teal);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">80</span>
+          <span class="axis-gap-tag axis-gap-ok">V3 ✓</span>
+        </div>
+        <div class="axis-row">
+          <span class="axis-label">Engagement</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:85%; background:var(--teal);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">85</span>
+          <span class="axis-gap-tag axis-gap-ok">V3 ✓</span>
+        </div>
+        <div class="axis-row">
+          <span class="axis-label">Original work</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:74%; background:var(--teal);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">74</span>
+          <span class="axis-gap-tag axis-gap-ok">V3 ✓</span>
+        </div>
+        <div class="axis-row">
+          <span class="axis-label">KPI impact</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:68%; background:var(--amber);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">68</span>
+          <span class="axis-gap-tag axis-gap-ok">V3 ✓</span>
+        </div>
+        <div class="axis-row">
+          <span class="axis-label">Processes</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:58%; background:var(--red);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">58</span>
+          <span class="axis-gap-tag axis-gap-low">−2 to V3</span>
+        </div>
+        <div class="axis-row">
+          <span class="axis-label">Frameworks</span>
+          <div class="axis-track">
+            <div class="axis-fill" style="width:52%; background:var(--red);"></div>
+            <div class="axis-threshold" style="left:60%;"></div>
+          </div>
+          <span class="axis-val">52</span>
+          <span class="axis-gap-tag axis-gap-low">−8 to V3</span>
+        </div>
+      </div>
+      <div class="axis-legend">
+        <div class="axis-legend-item">
+          <div class="legend-line"></div>
+          <span>V3 threshold (60)</span>
+        </div>
+        <div class="axis-legend-item">
+          <div style="width:10px; height:6px; background:var(--teal); border-radius:3px;"></div>
+          <span>Above threshold</span>
+        </div>
+        <div class="axis-legend-item">
+          <div style="width:10px; height:6px; background:var(--red); border-radius:3px;"></div>
+          <span>Below threshold</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /story-grid -->
+
+  <!-- ─── KPI Impact ─── -->
+  <div class="section-label">Evidence</div>
+
+  <div class="evidence-card" id="kpi-card">
+    <div class="evidence-header" onclick="toggle('kpi-body','kpi-chev')">
+      <div class="evidence-header-left">
+        <span class="evidence-title">Target Performance</span>
+        <span class="evidence-summary">3 of 5 targets hit · 3 verified by program manager</span>
+      </div>
+      <span class="evidence-chevron" id="kpi-chev">&#8964;</span>
+    </div>
+    <div class="evidence-body" id="kpi-body">
+      <p class="evidence-narrative">
+        Hit 3 of 5 KPI targets. Equipment qualifications (10 vs 8) and SOP approvals (7 vs 5) both overperformed — front-loaded to clear the path for commercial batches in Q2. Batch success rate came in at 88% vs 92% target — two batches failed due to a particulate excursion in Cleanroom 3B (failing HEPA filter, 11-day investigation). Deviation closure rate (78% vs 90%) was the biggest miss: 4 deviations from January still open pending contract testing lab results.
+      </p>
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th style="width:45%">Target</th>
+            <th>Goal</th>
+            <th>Actual</th>
+            <th>Status</th>
+            <th>Verified</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="kpi-name">Batch Success Rate</td>
+            <td style="color:var(--ink-muted)">92%</td>
+            <td style="font-weight:500">88%</td>
+            <td><span class="kpi-status kpi-miss">Missed</span></td>
+            <td><span class="kpi-verified">✓ Verified</span></td>
+          </tr>
+          <tr>
+            <td class="kpi-name">Equipment Qualifications</td>
+            <td style="color:var(--ink-muted)">8</td>
+            <td style="font-weight:500">10</td>
+            <td><span class="kpi-status kpi-hit">Hit</span></td>
+            <td><span class="kpi-verified">✓ Verified</span></td>
+          </tr>
+          <tr>
+            <td class="kpi-name">SOPs Drafted &amp; Approved</td>
+            <td style="color:var(--ink-muted)">5</td>
+            <td style="font-weight:500">7</td>
+            <td><span class="kpi-status kpi-hit">Hit</span></td>
+            <td><span class="kpi-verified">✓ Verified</span></td>
+          </tr>
+          <tr>
+            <td class="kpi-name">Deviation Closure Rate</td>
+            <td style="color:var(--ink-muted)">90%</td>
+            <td style="font-weight:500">78%</td>
+            <td><span class="kpi-status kpi-miss">Missed</span></td>
+            <td><span class="kpi-unverified">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="kpi-name">Operator Training Batches</td>
+            <td style="color:var(--ink-muted)">4</td>
+            <td style="font-weight:500">4</td>
+            <td><span class="kpi-status kpi-hit">Hit</span></td>
+            <td><span class="kpi-unverified">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── Constraint Patterns ─── -->
+  <div class="evidence-card" id="cst-card">
+    <div class="evidence-header" onclick="toggle('cst-body','cst-chev')">
+      <div class="evidence-header-left">
+        <span class="evidence-title">What Shaped This Month</span>
+        <span class="evidence-summary">8 blockers raised · 5 resolved · 2 recurring patterns</span>
+      </div>
+      <span class="evidence-chevron" id="cst-chev">&#8964;</span>
+    </div>
+    <div class="evidence-body" id="cst-body">
+      <p class="evidence-narrative">
+        Two patterns dominated: external dependencies (contract lab turnaround, vendor lead times) and approval bottlenecks (regulatory review cycles). The HEPA filter delay was the costliest — 2 failed batches because replacement filters had a 6-week lead time and no safety stock. The regulatory bottleneck was resolved this month by switching from sequential to joint reviews, saving 3 weeks per protocol. The second-shift supervisor vacancy is the most persistent blocker — single-shift operation since February is capping Facility 3 throughput at 60%.
+      </p>
+      <div class="constraint-meta">
+        <div class="c-meta-item">
+          <span class="c-meta-num">8</span>
+          <span class="c-meta-label">Blockers raised</span>
+        </div>
+        <div class="c-meta-item">
+          <span class="c-meta-num" style="color:var(--teal)">5</span>
+          <span class="c-meta-label">Resolved</span>
+        </div>
+        <div class="c-meta-item">
+          <span class="c-meta-num" style="color:var(--red)">3</span>
+          <span class="c-meta-label">Still open</span>
+        </div>
+        <div class="c-meta-item">
+          <span class="c-meta-num">63%</span>
+          <span class="c-meta-label">Resolution rate</span>
+        </div>
+      </div>
+      <div class="c-list">
+        <div class="c-item">
+          <div class="c-type-dot c-type-assumptions"></div>
+          <div class="c-item-content">
+            <p class="c-item-label">HEPA filter replacement for Cleanroom 3B delayed — vendor lead time 6 weeks, 2 batches failed during wait</p>
+            <div class="c-item-meta">
+              <span class="c-tag">External dependency</span>
+              <span class="c-status-resolved">✓ Resolved Mar 19</span>
+            </div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-type-dot c-type-internal_support"></div>
+          <div class="c-item-content">
+            <p class="c-item-label">Contract testing lab turnaround on deviation root cause — 4 open deviations waiting 18+ days for results</p>
+            <div class="c-item-meta">
+              <span class="c-tag">External dependency</span>
+              <span class="c-status-open">● Still open</span>
+            </div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-type-dot c-type-permissions"></div>
+          <div class="c-item-content">
+            <p class="c-item-label">Regulatory affairs sequential review adding 3 weeks to every protocol approval — switched to joint review</p>
+            <div class="c-item-meta">
+              <span class="c-tag">Approval bottleneck</span>
+              <span class="c-status-resolved">✓ Resolved Mar 5</span>
+            </div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-type-dot c-type-talent"></div>
+          <div class="c-item-content">
+            <p class="c-item-label">Second shift supervisor vacancy — production limited to single shift since February, capping throughput at 60%</p>
+            <div class="c-item-meta">
+              <span class="c-tag">Team gap</span>
+              <span class="c-status-open">● Still open</span>
+            </div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-type-dot c-type-assumptions"></div>
+          <div class="c-item-content">
+            <p class="c-item-label">Compressed air system assumed qualified — DQ/IQ found incomplete during batch review</p>
+            <div class="c-item-meta">
+              <span class="c-tag">Assumption gap</span>
+              <span class="c-status-resolved">✓ Resolved Mar 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Career Trajectory ─── -->
+  <div class="evidence-card" id="career-card">
+    <div class="evidence-header" onclick="toggle('career-body','career-chev')">
+      <div class="evidence-header-left">
+        <span class="evidence-title">Career Trajectory</span>
+        <span class="evidence-summary">V2 → V3 projected Feb 2027 · 3 months ahead of plan</span>
+      </div>
+      <span class="evidence-chevron" id="career-chev">&#8964;</span>
+    </div>
+    <div class="evidence-body" id="career-body">
+      <p class="evidence-narrative">
+        Tracking ahead of plan for V3 (Program Lead) — projected February 2027, nearly 3 months ahead of the planned May 2027 target. Delivery and original work scores already exceed V3 thresholds, which is unusual for someone 5 months into V2. The gap is capability: framework application (52) and process adoption (58) both below the 60 minimum. Consciously applying and documenting structured frameworks over the next 3–4 months — rather than defaulting to ad-hoc technical problem-solving — will clear the remaining gap.
+      </p>
+
+      <div class="career-stats">
+        <div class="career-stat">
+          <span class="career-stat-val">V2</span>
+          <span class="career-stat-label">Current level</span>
+        </div>
+        <div class="career-stat">
+          <span class="career-stat-val" style="color:var(--teal)">Feb '27</span>
+          <span class="career-stat-label">V3 projected</span>
+        </div>
+        <div class="career-stat">
+          <span class="career-stat-val" style="color:var(--amber)">+3 mo</span>
+          <span class="career-stat-label">Ahead of plan</span>
+        </div>
+        <div class="career-stat">
+          <span class="career-stat-val">5 mo</span>
+          <span class="career-stat-label">At V2</span>
+        </div>
+      </div>
+
+      <!-- Career runway visual -->
+      <div class="career-runway">
+        <div class="runway-track">
+          <div class="runway-progress" style="width:28%"></div>
+        </div>
+        <div class="runway-nodes">
+          <!-- V1 achieved -->
+          <div class="runway-node" style="left:0%">
+            <div class="runway-dot achieved"></div>
+            <div class="runway-label">V1</div>
+            <div class="runway-date">Aug '24</div>
+          </div>
+          <!-- V2 current -->
+          <div class="runway-node" style="left:28%">
+            <div class="runway-dot current"></div>
+            <div class="runway-label">V2 ← Now</div>
+            <div class="runway-date">Sep '25</div>
+          </div>
+          <!-- V3 projected -->
+          <div class="runway-node" style="left:55%">
+            <div class="runway-dot projected"></div>
+            <div class="runway-label">V3</div>
+            <div class="runway-date">Feb '27 ↑</div>
+          </div>
+          <!-- V4 future -->
+          <div class="runway-node" style="left:78%">
+            <div class="runway-dot future"></div>
+            <div class="runway-label">V4</div>
+            <div class="runway-date">Aug '30</div>
+          </div>
+          <!-- V5 future -->
+          <div class="runway-node" style="left:100%">
+            <div class="runway-dot future"></div>
+            <div class="runway-label">V5</div>
+            <div class="runway-date">Aug '36</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); margin:1.25rem 0 0.5rem;">Gap areas for V3 clearance</div>
+      <div class="gap-drivers">
+        <div class="gap-driver-item">
+          <span class="gap-driver-icon">↓</span>
+          Framework application score (52) below V3 threshold (60) — gap of 8 points
+        </div>
+        <div class="gap-driver-item">
+          <span class="gap-driver-icon">↓</span>
+          Process adoption score (58) below V3 threshold (60) — gap of 2 points
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <div class="portfolio-footer">
+    <span>Vayura Lifesciences · Facility 3 Commercialization · March 2026</span>
+    <span class="footer-uid">PDGMS-EMP-00512 · PF-2026-03-00512</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  function toggle(bodyId, chevId) {
+    var body = document.getElementById(bodyId);
+    var chev = document.getElementById(chevId);
+    var isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    chev.classList.toggle('open', !isOpen);
+  }
+
+  // Animate axis bars on load
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.axis-fill').forEach(function(el) {
+      var w = el.style.width;
+      el.style.width = '0';
+      setTimeout(function() { el.style.width = w; }, 400);
+    });
+  });
+</script>
+</body>
+</html>
